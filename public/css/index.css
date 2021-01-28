@@ -1,0 +1,40 @@
+*{
+    padding:0;
+    margin:0;
+}
+a{
+    text-decoration: none;
+    color: #333333;
+}
+ul{
+    list-style-type: none;
+}
+.wrap{
+    
+}
+.cate_box{
+    background: #3e98f0;
+}
+.cate_box ul{
+    overflow-x: auto;
+    width: auto;
+    white-space:nowrap;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+}
+.cate_box ul::-webkit-scrollbar {
+    display: none;
+}
+.cate_box ul li{
+    display: inline-block;
+    line-height: 40px;
+    height: 40px;
+    font-size: 16px;
+    color: #c2daf8;
+    margin: 0 5px;
+    padding:0 5px;
+}
+.cate_box .select{
+    border-bottom: 2px solid #fff;
+    color: #fff;
+}

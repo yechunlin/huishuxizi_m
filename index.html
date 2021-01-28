@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name="Author" content="ycl">
+    <meta name="Description" content="看视频">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="true" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <title>会书习字</title>
+    <link rel="stylesheet" href="./public/css/index.css">
+</head>
+<body>
+    <div class="wrap" id="app">
+        <div class="cate_box">
+            <ul>
+                <li v-for="items in cateList" @clicl="selectCate(items.id)">{{ items.name }}</li>
+            </ul>
+        </div>   
+    </div>
+</body>
+</html>
+<script src="./public/js/swiper-6.3.3/swiper-master/package/swiper-bundle.min.js"></script>
+<script src="./public/js/axios.min.js"></script>
+<script src="./public/js/vue.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+	  el: '#app',
+	  data: {
+		cateList: [
+            {'id':1,'name':'绘画'},
+            {'id':2,'name':'书法'},
+            {'id':3,'name':'音乐'},
+            {'id':4,'name':'朗诵'},
+            {'id':5,'name':'烹饪'},
+            {'id':6,'name':'体育'},
+            {'id':7,'name':'剪纸'},
+            {'id':8,'name':'书法'}
+        ]
+	  },
+	  created: function () {
+		this.getCateList();  
+	  },
+	  updated: function() {
+
+	  },
+	  computed: {
+
+	  },
+	  methods: {
+        selectCate: function(id){
+            
+        }
+	  }
+	})
+</script>
