@@ -17,33 +17,48 @@
 <body>
     <div class="wrap" id="app">
         <div class="cate_box">
+            <!-- <div class="cate_bt">
+                <img src="./public/images/banner.png">
+            </div> -->
             <ul>
-                <li v-for="items in cateList" @clicl="selectCate(items.id)">{{ items.name }}</li>
+                <li v-for="items in cateList" :class="{select:selectCateId==items.id}" @click="selectCate(items.id)">{{ items.name }}</li>
             </ul>
-        </div>   
+        </div>
+        <div class="class_course_box">
+            <div class="class_box">
+                <ul>
+                    <li v-for="items in classList" :class="{select_c:selectClassId==items.id}" @click="selectClass(items)">{{ items.name }}</li>
+                </ul> 
+            </div>
+            <div class="course_box">
+                    <div class="course_items" v-for="items in courseList">
+                        <div class="course_cover">
+                            <img :src="items.cover"/>
+                        </div>
+                        <div class="course_title">{{ items.title }}}</div>
+                        <div class="course_info">
+                            等级：{{ items.level_name }} | {{ items.teacher_name }}
+                        </div>
+                    </div>
+            </div> 
+        </div> 
     </div>
 </body>
 </html>
-<script src="./public/js/swiper-6.3.3/swiper-master/package/swiper-bundle.min.js"></script>
 <script src="./public/js/axios.min.js"></script>
 <script src="./public/js/vue.js"></script>
 <script type="text/javascript">
 	var app = new Vue({
 	  el: '#app',
 	  data: {
-		cateList: [
-            {'id':1,'name':'绘画'},
-            {'id':2,'name':'书法'},
-            {'id':3,'name':'音乐'},
-            {'id':4,'name':'朗诵'},
-            {'id':5,'name':'烹饪'},
-            {'id':6,'name':'体育'},
-            {'id':7,'name':'剪纸'},
-            {'id':8,'name':'书法'}
-        ]
+		cateList: {},
+        classList: {},
+        courseList: {},
+        selectCateId : 1,
+        selectClassId : 1
 	  },
 	  created: function () {
-		this.getCateList();  
+		  this.getCateList();
 	  },
 	  updated: function() {
 
@@ -52,8 +67,43 @@
 
 	  },
 	  methods: {
+        getCateList: function (){
+            let that = this;
+            axios.get('../api/public/index.php/hsxz/Cate/getCate?limit=100').then(function (response) {
+				if(response.data.status == 1){
+                    that.cateList = response.data.data.items;
+                    that.getClassList(response.data.data.items[0]['id']);
+                }
+			}).catch(function (error) {
+				console.log(error);
+			});
+        },
+        getClassList: function (cate_id){
+			var that = this;
+			axios.get('../api/public/index.php/hsxz/Class/getClass?cate_id='+cate_id+'&limit=20').then(function (response) {
+				if(response.data.status == 1){
+					console.log(response.data.data)
+                    if(response.data.data.total){
+                        that.classList = response.data.data.items;
+                        that.selectClassId = response.data.data.items[0].id;
+                        that.courseList = response.data.data.items[0].courses;
+                    }else{
+                        that.classList = {};
+                        that.courseList = {};
+                    }
+
+				}
+			}).catch(function (error) {
+				console.log(error);
+			});	
+		},
         selectCate: function(id){
-            
+            this.selectCateId = id;
+            this.getClassList(id);
+        },
+        selectClass: function(items){
+            this.selectClassId = items.id;
+            this.courseList = items.courses;
         }
 	  }
 	})
