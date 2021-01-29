@@ -60,7 +60,7 @@ video{
 .bar{
     position:absolute;
     z-index: 99;
-    width: 100%;
+    width: 45%;
 }
 .time_box{
     margin:0 5px;
