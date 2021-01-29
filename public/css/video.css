@@ -50,6 +50,7 @@ video{
 }
 .total_progress{
     background-color:#666;
+    width: 100%;
 }
 .current_progress{
     position:absolute;
@@ -59,6 +60,7 @@ video{
 .bar{
     position:absolute;
     z-index: 99;
+    width: 100%;
 }
 .time_box{
     margin:0 5px;
