@@ -1,0 +1,69 @@
+*{
+    padding:0;
+    margin:0;
+}
+.video_box{
+    width: 100%;
+    height: 230px;
+    background: #000;
+    position: relative;
+}
+#my_video{
+    width: 100%;
+    height: 100%;
+}
+.video_box .loading{
+    position: absolute;
+    text-align: center;
+    background:url('../images/20191020231114381.gif') center center;
+    background-size: contain;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.control{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 44px;
+    bottom: 0;
+    border: 0 solid #e2e2e2;
+    background-image: linear-gradient(21deg,rgba(0,0,0,.76),transparent);
+    font-size: 0;
+    text-align: left;
+}
+.control_com{
+    height: 100%;
+}
+.play_state_icon{
+    background-color: transparent;
+    color: #585858;
+    width: 44px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+}
+.play_state_icon i{
+    height: 24px;
+    width: 24px;
+    fill: #fff;
+    list-style: none;
+    display: none;
+}
+.play_state_icon .play_active{
+    display: inline-block;
+}
+.progress{
+    position: relative;
+    height: 100%;
+    display: flex;
+    cursor: pointer;
+    vertical-align: middle;
+    width: 50%;
+}
