@@ -33,14 +33,15 @@
             <div class="course_box">
                     <div class="course_items" v-for="items in courseList">
                         <div class="course_cover">
-                            <img :src="items.cover"/>
+                            <img :src="items.cover" class="course_cover_item"/>
+                            <div class="play_bt" @click="playVideo(items.id)"></div>
                         </div>
                         <div class="course_title">{{ items.title }}</div>
                         <div class="course_info">
                             等级：{{ items.level_name }} | {{ items.teacher_name }}
                         </div>
                     </div>
-            </div> 
+            </div>
         </div> 
     </div>
 </body>
@@ -104,6 +105,9 @@
         selectClass: function(items){
             this.selectClassId = items.id;
             this.courseList = items.courses;
+        },
+        playVideo: function(id){
+            window.location.href = 'video.html';
         }
 	  }
 	})

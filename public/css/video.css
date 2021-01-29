@@ -1,0 +1,103 @@
+*{box-sizing: border-box}
+.player{
+    width:98%;
+    margin:0 auto;
+    background-color: #222;
+    padding:5px;
+    -moz-user-select:none; /* Firefox私有属性 */
+    -webkit-user-select:none; /* WebKit内核私有属性 */
+    -ms-user-select:none; /* IE私有属性(IE10及以后) */
+    -khtml-user-select:none; /* KHTML内核私有属性 */
+    -o-user-select:none; /* Opera私有属性 */
+    user-select:none; /* CSS3属性 */
+}
+.show{
+    text-align: center;
+    height: 200px;
+    background: #333;
+    background:url('../images/20191020231114381.gif') center center;
+    background-size: contain;
+}
+video{
+    display: none;
+    width:auto;
+    max-width: 100%;
+}
+
+.controller{
+    color:#fff;
+    height: 20px;
+}
+.controller_tool{
+    float:left;
+    text-align: center;
+    cursor:pointer;
+}
+.player_btn{
+    width:5%;
+}
+.pull_btn{
+    float:right;
+    width:5%;
+}
+.player_progress{
+    width: 45%;
+}
+.progress{
+    height:4px;
+    border-radius: 2px;
+    margin-top:9px;
+}
+.total_progress{
+    background-color:#666;
+}
+.current_progress{
+    position:absolute;
+    width:0px;
+    background-color:yellowgreen;
+}
+.bar{
+    position:absolute;
+    z-index: 99;
+}
+.time_box{
+    margin:0 5px;
+    cursor:default;
+    font-size: 13px;
+    line-height: 20px;
+    width: 15%;
+}
+.volume_box{
+    position:relative;
+    width:8%;
+    padding:0 10px;
+}
+.volume_proress_now {
+    border-radius: 4px;
+    top:-30px;
+    left:16px;
+    position:absolute;
+    width:6px;
+    height:30px;
+    background-color: yellowgreen;
+}
+.volume_proress{
+    border-radius: 4px;
+    top:-60px;
+    left:16px;
+    position:absolute;
+    width:6px;
+    height:60px;
+    background-color: #666;
+}
+.volume_proress_bar{
+    border-radius: 4px;
+    top:-60px;
+    left:16px;
+    position:absolute;
+    width:6px;
+    height:60px;
+}
+.volume_bar_box{
+    display: none;
+}
