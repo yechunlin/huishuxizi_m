@@ -2,11 +2,15 @@
     padding:0;
     margin:0;
 }
+video::-webkit-media-controls{ 
+    display:none !important;
+}
 .video_box{
     width: 100%;
     height: 230px;
     background: #000;
     position: relative;
+    transition: all 0.5s;
 }
 #my_video{
     width: 100%;
@@ -24,7 +28,7 @@
 }
 .control{
     position: absolute;
-    z-index: 100;
+    z-index: 40;
     width: 100%;
     height: 44px;
     bottom: 0;
@@ -35,35 +39,66 @@
 }
 .control_com{
     height: 100%;
+    font-size: 23px;
 }
 .play_state_icon{
     background-color: transparent;
     color: #585858;
     width: 44px;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    cursor: pointer;
-    display: flex;
+    float: left
 }
-.play_state_icon i{
-    height: 24px;
-    width: 24px;
+.play_state_icon .play_bt_icon{
+    height: 18px;
+    width: 18px;
     fill: #fff;
-    list-style: none;
-    display: none;
-}
-.play_state_icon .play_active{
-    display: inline-block;
+    display: block;
+    margin: 13px;
+    cursor: pointer;
+    background: url(../images/play_1.png) center center;
+    background-size: 100% 100%;
 }
 .progress{
+    width: calc(100% - 220px);
     position: relative;
-    height: 100%;
-    display: flex;
+    float: left
+}
+.progress .progress_show{
+    height: 4px;
+    margin-top: 20px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.3);
+    widows: 100%;
+}
+.progress .progress_show_now{
+    position: absolute;
+    height: 4px;
+    left: 0;
+    top: 20px;
+    background: #fb7299;
+    z-index: -1;
+
+    border-radius: 2px;
+}
+.play_show_time{
+    width: 120px;
+    font-size: 13px;
+    line-height: 44px;
+    color: #fff;
+    margin: 0 5px;
+    text-align: center;
+    float: left
+}
+.play_show_full{
+    width: 44px;
+    float: right
+}
+.play_show_full_icon{
+    height: 18px;
+    width: 18px;
+    fill: #fff;
+    display: block;
+    margin: 13px;
     cursor: pointer;
-    vertical-align: middle;
-    width: 50%;
+    background: url(../images/full_1.png) center center;
+    background-size: 100% 100%;
 }
