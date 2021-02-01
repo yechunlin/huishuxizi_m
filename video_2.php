@@ -19,7 +19,8 @@ if($res && intval($res['status'])){
     <meta name="screen-orientation" content="portrait" />
     <meta name="x5-fullscreen" content="true" />
     <meta name="360-fullscreen" content="true" />
-    <title>自定义视频播放器</title>
+    <link rel="shortcut icon" href="#" />
+    <title><?php echo $res['data']['title'];?></title>
     <link href="./public/css/video_2.css" rel="stylesheet">
 </head>
 <body>
