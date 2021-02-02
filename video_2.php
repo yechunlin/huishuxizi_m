@@ -1,10 +1,5 @@
 <?php
 $id = intval($_GET['course_id']);
-$res = json_decode(file_get_contents('http://39.107.241.122/api/public/index.php/hsxz/Course/getCourseInfo?id='.$id), true);
-if($res && intval($res['status'])){
-    $url = $res['data']['video'];
-}
-//$url = 'http://rs.qubaobei.com/video16118236853256109.mp4';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +21,7 @@ if($res && intval($res['status'])){
 <body>
     <div class="video_box">
         <!-- <video id="my_video" src="../api/public/upload/videos/20210126/0fa3d305ee3686dfafc1bfd17af47bff.mp4"></video> -->
-        <video id="my_video" autoplay playsinline="true" webkit-playsinline="true" src="<?php echo $url;?>"></video>
+        <video id="my_video" autoplay playsinline="true" webkit-playsinline="true"></video>
         <div class="loading"></div>
         <div class="control">
             <div class="control_com play_state_icon">
@@ -48,6 +43,22 @@ if($res && intval($res['status'])){
     </div>
 <script src="./public/js/jquery.min.js"></script>
 <script>
+//创建XMLHttpRequest对象
+var xhr = new XMLHttpRequest();
+//配置请求方式、请求地址以及是否同步
+xhr.open('GET', "http://39.107.241.122/api/public/index.php/hsxz/Course/getCourseVideo?id=<?php echo $id;?>", true);
+//设置请求结果类型为blob
+xhr.responseType = 'blob';
+//请求成功回调函数
+xhr.onload = function(e) {
+    if (this.status == 200) {//请求成功
+        //获取blob对象
+        var blob = this.response;
+        //获取blob对象地址，并把值赋给容器
+        $("#my_video").attr("src", URL.createObjectURL(blob));
+    }
+};
+xhr.send();
 $(function(){
     var video = $('#my_video');
     var videoPlay = $('.play_bt_icon');
