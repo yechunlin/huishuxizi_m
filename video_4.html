@@ -17,26 +17,11 @@
 </head>
 <body>
     <div class="video_box">
-        <video id="my_video" controls="controls" src=""></video>
+        <video id="my_video" controls="controls" src="../api/public/upload/videos/20210127/265da232aecafdd7104aa9e825eb8007.MOV"></video>
     </div>
 </body>
 </html>
 <script src="./public/js/jquery.min.js"></script>
 <script>
-    //创建XMLHttpRequest对象
-    var xhr = new XMLHttpRequest();
-    //配置请求方式、请求地址以及是否同步
-    xhr.open('GET', 'http://localhost/study/video.php', true);
-    //设置请求结果类型为blob
-    xhr.responseType = 'blob';
-    //请求成功回调函数
-    xhr.onload = function(e) {
-        if (this.status == 200) {//请求成功
-            //获取blob对象
-            var blob = this.response;
-            //获取blob对象地址，并把值赋给容器
-            $("#my_video").attr("src", URL.createObjectURL(blob));
-        }
-    };
-    xhr.send();
+
 </script>
